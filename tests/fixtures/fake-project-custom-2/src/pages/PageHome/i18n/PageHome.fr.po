@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: PageHome\n"
+
+#: src/pages/PageHome/index.ts:8
+#: src/pages/PageHome/PageHome.vue.ts:6
+msgid "getStarted"
+msgstr ""
+
+#: src/pages/PageHome/index.ts:7
+#: src/pages/PageHome/PageHome.vue.ts:5
+msgid "heroSubtitle"
+msgstr ""
+
+#: src/pages/PageHome/index.ts:6
+#: src/pages/PageHome/PageHome.vue.ts:4
+msgid "heroTitle"
+msgstr ""
+
+#: src/pages/PageHome/PageHome.vue.ts:7
+msgid "learnMore"
+msgstr ""

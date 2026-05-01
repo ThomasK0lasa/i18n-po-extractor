@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NavBar\n"
+"Language: pl\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: NavBar\n"
+
+#: src/components/NavBar/NavBar.ts:6
+msgid "NAV.ABOUT"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:25
+#. Variables: {{name}}, {{date}} — user name and registration date
+msgid "NAV.AUTO_VARS"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.empty.html.ts:5
+msgid "NAV.EMPTY"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:5
+msgid "NAV.ITEM_HOME"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:6
+msgid "NAV.ITEM_SETTINGS"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:29
+#, fuzzy
+msgid "NAV.ITEMS"
+msgid_plural "NAV.ITEMS"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/NavBar/NavBar.ts:13
+#. Second line of instruction
+#. First line of instruction
+msgid "NAV.MULTI_COMMENT"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:5
+msgid "NAV.SETTINGS"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:8
+#. Shown in the settings tooltip
+msgid "NAV.SETTINGS_HINT"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:8
+#. Main navigation template
+msgid "NAV.TITLE"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:21
+#. Variables: {{userName}}, {{itemCount}} — the user and how many items
+msgid "NAV.WITH_VARS"
+msgstr ""
+
+#: src/components/NavBar/NavBar.ts:17
+#. Context "verb": action performed by user
+msgctxt "verb"
+msgid "NAV.ACTION"
+msgstr ""

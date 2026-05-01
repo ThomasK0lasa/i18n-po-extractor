@@ -1,0 +1,18 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: PageAbout\n"
+
+#: src/pages/PageAbout/index.ts:6
+msgid "aboutTitle"
+msgstr ""
+
+#: src/pages/PageAbout/index.ts:8
+msgid "meetTheTeam"
+msgstr ""
+
+#: src/pages/PageAbout/index.ts:7
+msgid "missionStatement"
+msgstr ""

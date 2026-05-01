@@ -1,0 +1,24 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NavBar\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: NavBar\n"
+
+#: src/components/NavBar/templates/NavBar.empty.html.ts:5
+msgid "NAV.EMPTY"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:5
+msgid "NAV.ITEM_HOME"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:6
+msgid "NAV.ITEM_SETTINGS"
+msgstr ""
+
+#: src/components/NavBar/templates/NavBar.html.ts:8
+#. Main navigation template
+msgid "NAV.TITLE"
+msgstr ""

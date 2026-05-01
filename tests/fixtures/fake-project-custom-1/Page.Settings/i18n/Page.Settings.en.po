@@ -1,0 +1,18 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Page.Settings\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: Page.Settings\n"
+
+#: src/pages/Page.Settings/Page.Settings.ts:5
+msgid "PAGE.SETTINGS.SUBTITLE"
+msgstr ""
+
+#: src/pages/Page.Settings/Page.Settings.ts:5
+msgid "PAGE.SETTINGS.TITLE"
+msgstr ""
+
+#~ msgid "SAVE"
+#~ msgstr ""

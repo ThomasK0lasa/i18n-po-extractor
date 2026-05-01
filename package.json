@@ -1,0 +1,45 @@
+{
+    "name": "i18n-po-extractor",
+    "version": "1.0.0",
+    "description": "Extract i18next t() keys from source files and sync per-component .po files with full gettext support.",
+    "type": "module",
+    "main": "index.js",
+    "bin": {
+        "i18n-po-extractor": "./index.js"
+    },
+    "scripts": {
+        "test": "node --test tests/index.test.js"
+    },
+    "keywords": [
+        "i18n",
+        "i18next",
+        "gettext",
+        "po",
+        "pot",
+        "translation",
+        "extractor",
+        "localization"
+    ],
+    "author": "@ThomasK0lasa",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "gettext-parser": "^8.0.0",
+        "glob": "^11.0.0"
+    },
+    "files": [
+        "index.js",
+        "lib/",
+        "README.md"
+    ],
+    "homepage": "https://github.com/ThomasK0lasa/i18n-po-extractor#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ThomasK0lasa/i18n-po-extractor.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ThomasK0lasa/i18n-po-extractor/issues"
+    }
+}

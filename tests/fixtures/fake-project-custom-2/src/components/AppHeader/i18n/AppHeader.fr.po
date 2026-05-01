@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: AppHeader\n"
+
+#: src/components/AppHeader/index.ts:6
+#: src/components/AppHeader/AppHeader.vue.ts:5
+#: src/components/AppHeader/AppHeader.vue.ts:15
+msgid "appName"
+msgstr ""
+
+#: src/components/AppHeader/AppHeader.vue.ts:8
+#: src/components/AppHeader/AppHeader.vue.ts:17
+msgid "navAbout"
+msgstr ""
+
+#: src/components/AppHeader/AppHeader.vue.ts:7
+#: src/components/AppHeader/AppHeader.vue.ts:16
+msgid "navHome"
+msgstr ""
+
+#: src/components/AppHeader/index.ts:7
+#: src/components/AppHeader/AppHeader.vue.ts:10
+#: src/components/AppHeader/AppHeader.vue.ts:18
+msgid "openMenu"
+msgstr ""

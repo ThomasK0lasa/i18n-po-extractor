@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Settings\n"
+"Language: pl\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: Settings\n"
+
+#: src/components/Settings/OptionsTest.ts:31
+msgctxt "noun"
+msgid "SETTINGS.ACTION"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:7
+msgctxt "noun"
+msgid "SETTINGS.SAVE"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:31
+msgctxt "verb"
+msgid "SETTINGS.ACTION"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:55
+msgctxt "verb"
+msgid "SETTINGS.DISABLE_MARKER"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:46
+#. Variables: {{var1}}
+msgctxt "verb"
+msgid "SETTINGS.MARKER_VARS"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:51
+#. Keep this very short
+#. Context "verb": action verb
+msgctxt "verb"
+msgid "SETTINGS.MIXED_COMMENT"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:6
+#: src/components/Settings/OptionsTest.ts:37
+#. Variables: {{action}}
+#, fuzzy
+msgctxt "verb"
+msgid "SETTINGS.SAVE"
+msgid_plural "SETTINGS.SAVE"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/Settings/OptionsTest.ts:10
+#, fuzzy
+msgid "SETTINGS.ITEMS_COUNT"
+msgid_plural "SETTINGS.ITEMS_COUNT"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/Settings/OptionsTest.ts:23
+msgid "SETTINGS.KEY"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:26
+msgid "SETTINGS.KEY2"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:7
+msgid "SETTINGS.LANGUAGE"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:10
+msgid "SETTINGS.RESET"
+msgstr ""
+
+#: src/components/Settings/Settings.ts:8
+#: src/components/Settings/OptionsTest.ts:20
+#: src/components/Settings/templates/Settings.html.ts:9
+msgid "SETTINGS.SAVE"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:8
+msgid "SETTINGS.THEME"
+msgstr ""
+
+#: src/components/Settings/Settings.ts:8
+#: src/components/Settings/templates/Settings.html.ts:6
+msgid "SETTINGS.TITLE"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:13
+#. Variables: {{name}}, {{date}}
+msgid "SETTINGS.WELCOME"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:41
+msgctxt "options_context"
+msgid "SETTINGS.OPTIONS_WIN"
+msgstr ""
+
+#: src/components/Settings/OptionsTest.ts:16
+#. Variables: {{label}}
+#, fuzzy
+msgctxt "active"
+msgid "SETTINGS.STATUS"
+msgid_plural "SETTINGS.STATUS"
+msgstr[0] ""
+msgstr[1] ""

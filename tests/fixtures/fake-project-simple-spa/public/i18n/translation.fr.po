@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/login.ts:7
+msgid "email label"
+msgstr ""
+
+#: src/login.ts:10
+msgid "forgot password"
+msgstr ""
+
+#: src/dashboard.ts:6
+msgid "last login"
+msgstr ""
+
+#: src/login.ts:9
+msgid "login button"
+msgstr ""
+
+#: src/login.ts:5
+msgid "login title"
+msgstr ""
+
+#: src/header.ts:8
+msgid "nav about"
+msgstr ""
+
+#: src/header.ts:6
+msgid "nav home"
+msgstr ""
+
+#: src/header.ts:7
+msgid "nav login"
+msgstr ""
+
+#: src/login.ts:8
+msgid "password label"
+msgstr ""
+
+#: src/dashboard.ts:8
+msgid "sign out"
+msgstr ""
+
+#: src/dashboard.ts:7
+msgid "view profile"
+msgstr ""
+
+#: src/dashboard.ts:5
+msgid "welcome back"
+msgstr ""

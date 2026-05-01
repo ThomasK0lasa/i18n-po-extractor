@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/lib/formatters/date.ts:8
+msgid "date_days_ago"
+msgstr ""
+
+#: src/lib/formatters/date.ts:6
+msgid "date_today"
+msgstr ""
+
+#: src/lib/formatters/date.ts:7
+msgid "date_yesterday"
+msgstr ""

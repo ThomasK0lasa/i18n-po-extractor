@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/lib/validators/email.ts:5
+msgid "validation_email_invalid"
+msgstr ""
+
+#: src/lib/validators/email.ts:4
+msgid "validation_email_required"
+msgstr ""

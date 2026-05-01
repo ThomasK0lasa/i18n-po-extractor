@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Page.Scan\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: Page.Scan\n"
+
+#: src/pages/Page.Scan/templates/Page.Scan.html.ts:7
+msgid "PAGE.SCAN.DESCRIPTION"
+msgstr ""
+
+#: src/pages/Page.Scan/templates/Page.Scan.html.ts:8
+msgid "PAGE.SCAN.START"
+msgstr ""
+
+#: src/pages/Page.Scan/templates/Page.Scan.html.ts:9
+msgid "PAGE.SCAN.STOP"
+msgstr ""
+
+#: src/pages/Page.Scan/templates/Page.Scan.html.ts:6
+msgid "PAGE.SCAN.TITLE"
+msgstr ""

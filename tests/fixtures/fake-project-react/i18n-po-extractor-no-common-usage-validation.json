@@ -1,0 +1,27 @@
+{
+    "locales": [
+        "en",
+        "de"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": false,
+    "keyValidation": {
+        "sentenceNameConvention": "camelCase",
+        "behavior": "warn"
+    },
+    "scans": [
+        {
+            "path": "src/components",
+            "namespace": "{fileName}",
+            "output": "locales/{locale}/{fileName}.po"
+        },
+        {
+            "path": "src/pages",
+            "namespace": "{fileName}",
+            "output": "locales/{locale}/{fileName}.po"
+        }
+    ],
+    "commonUsageValidation": null
+}

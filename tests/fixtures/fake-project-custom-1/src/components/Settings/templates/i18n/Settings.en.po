@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Settings\n"
+"Language: en\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: Settings\n"
+
+#: src/components/Settings/templates/Settings.html.ts:7
+msgid "SETTINGS.LANGUAGE"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:10
+msgid "SETTINGS.RESET"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:9
+msgid "SETTINGS.SAVE"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:8
+msgid "SETTINGS.THEME"
+msgstr ""
+
+#: src/components/Settings/templates/Settings.html.ts:6
+msgid "SETTINGS.TITLE"
+msgstr ""

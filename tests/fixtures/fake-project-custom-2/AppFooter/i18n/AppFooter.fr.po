@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AppFooter\n"
+"Language: fr\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Namespace: AppFooter\n"
+
+#: src/components/AppFooter/index.ts:6
+msgid "footerCopyright"
+msgstr ""
+
+#: src/components/AppFooter/index.ts:7
+msgid "privacyPolicy"
+msgstr ""
+
+#: src/components/AppFooter/index.ts:8
+msgid "termsOfService"
+msgstr ""

@@ -1,0 +1,23 @@
+{
+    "locales": [
+        "en",
+        "pl"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": true,
+    "namespaceSeparator": ".",
+    "scans": [
+        {
+            "path": "src/components",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "autoRename": true
+        },
+        {
+            "path": "src/pages",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "autoRename": true
+        }
+    ]
+}

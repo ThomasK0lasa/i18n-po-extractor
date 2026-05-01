@@ -1,0 +1,44 @@
+{
+    "locales": [
+        "en"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": true,
+    "namespaceSeparator": ".",
+    "keyValidation": {
+        "sentenceNameConvention": "SCREAMING_SNAKE_CASE",
+        "behavior": "warn",
+        "sentenceSeparator": "."
+    },
+    "scans": [
+        {
+            "path": "src/components",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "extensions": [
+                "ts",
+                "tsx",
+                "js",
+                "jsx",
+                "mjs",
+                "vue"
+            ],
+            "commonOutput": "src/i18n/common.{locale}.po"
+        },
+        {
+            "path": "src/pages",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "extensions": [
+                "ts",
+                "tsx",
+                "js",
+                "jsx",
+                "mjs",
+                "vue"
+            ]
+        }
+    ]
+}

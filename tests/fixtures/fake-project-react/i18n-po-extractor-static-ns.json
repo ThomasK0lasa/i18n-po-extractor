@@ -1,0 +1,22 @@
+{
+    "locales": [
+        "en",
+        "de"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": false,
+    "scans": [
+        {
+            "path": "src/components",
+            "namespace": "app",
+            "output": "locales/{locale}/{fileName}.po"
+        },
+        {
+            "path": "src/pages",
+            "namespace": "app",
+            "output": "locales/{locale}/{fileName}.po"
+        }
+    ]
+}

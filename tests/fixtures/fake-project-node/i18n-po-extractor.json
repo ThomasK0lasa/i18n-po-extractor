@@ -1,0 +1,27 @@
+{
+    "locales": [
+        "en"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": false,
+    "keyValidation": {
+        "sentenceNameConvention": "snake_case",
+        "behavior": "error"
+    },
+    "scans": [
+        {
+            "path": "src/controllers",
+            "output": "locales/{locale}/{fileName}.po"
+        },
+        {
+            "path": "src/services",
+            "output": "locales/{locale}/{fileName}.po"
+        },
+        {
+            "path": "src/middleware",
+            "output": "locales/{locale}/{fileName}.po"
+        }
+    ]
+}

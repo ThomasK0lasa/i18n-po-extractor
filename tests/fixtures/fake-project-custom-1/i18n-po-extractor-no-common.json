@@ -1,0 +1,39 @@
+{
+    "locales": [
+        "en"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": true,
+    "namespaceSeparator": ".",
+    "scans": [
+        {
+            "path": "src/components",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "extensions": [
+                "ts",
+                "tsx",
+                "js",
+                "jsx",
+                "mjs",
+                "vue"
+            ],
+            "commonOutput": null
+        },
+        {
+            "path": "src/pages",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po",
+            "extensions": [
+                "ts",
+                "tsx",
+                "js",
+                "jsx",
+                "mjs",
+                "vue"
+            ]
+        }
+    ]
+}

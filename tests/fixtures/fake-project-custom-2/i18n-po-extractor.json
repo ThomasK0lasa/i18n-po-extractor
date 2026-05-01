@@ -1,0 +1,30 @@
+{
+    "locales": [
+        "en",
+        "fr"
+    ],
+    "markers": [
+        "t"
+    ],
+    "namespaceInKey": false,
+    "keyValidation": {
+        "sentenceNameConvention": "camelCase",
+        "behavior": "warn"
+    },
+    "scans": [
+        {
+            "path": "src/components",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po"
+        },
+        {
+            "path": "src/pages",
+            "namespace": "{firstFolderName}",
+            "output": "{firstFolderPath}/i18n/{firstFolderName}.{locale}.po"
+        },
+        {
+            "path": "src/lib",
+            "output": "locales/{locale}/{fileName}.po"
+        }
+    ]
+}
