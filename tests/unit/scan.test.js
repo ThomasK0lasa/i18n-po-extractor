@@ -34,7 +34,7 @@ function makeConfig(overrides = {}) {
             path: 'src/components',
             namespace: '{firstFolderName}',
             output: '{firstFolderPath}/i18n/{firstFolderName}.{locale}.po',
-            extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'vue'],
+            extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'vue', 'html'],
             commonOutput: null,
             writeNamespaceHeader: true,
         }],
@@ -242,7 +242,7 @@ export default function () {
             path: 'src/pages',
             namespace: '{firstFolderName}',
             output: '{firstFolderPath}/i18n/{firstFolderName}.{locale}.po',
-            extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'vue'],
+            extensions: ['ts', 'tsx', 'js', 'jsx', 'mjs', 'vue', 'html'],
             commonOutput: 'src/i18n/pages-common.{locale}.po',
             writeNamespaceHeader: true,
         });
@@ -304,6 +304,31 @@ export default function () {
         setup({'src/components/NavBar/NavBar.ts': "const a = this.t('KEY_THIS');"});
         const keys = scan(makeConfig(), tmpDir);
         if (!hasKey(keys, 'KEY_THIS')) throw new Error('KEY_THIS from this.t() not extracted');
+    });
+
+    it('chained method call this.$i18n.t() extracted correctly', () => {
+        setup({'src/components/NavBar/NavBar.ts': "const a = this.$i18n.t('KEY_CHAIN');"});
+        const keys = scan(makeConfig(), tmpDir);
+        if (!hasKey(keys, 'KEY_CHAIN')) throw new Error('KEY_CHAIN from this.$i18n.t() not extracted');
+    });
+
+    it('deep chained method call app.services.i18n.t() extracted correctly', () => {
+        setup({'src/components/NavBar/NavBar.ts': "const a = app.services.i18n.t('KEY_DEEP');"});
+        const keys = scan(makeConfig(), tmpDir);
+        if (!hasKey(keys, 'KEY_DEEP')) throw new Error('KEY_DEEP from app.services.i18n.t() not extracted');
+    });
+
+    it('html files are scanned by default extensions', () => {
+        setup({'src/components/NavBar/NavBar.html': '<div>{{ t("KEY_HTML") }}</div>'});
+        const keys = scan(makeConfig(), tmpDir);
+        if (!hasKey(keys, 'KEY_HTML')) throw new Error('KEY_HTML from .html file not extracted');
+    });
+
+    it('dot-notation does not match word-prefixed marker like at()', () => {
+        setup({'src/components/NavBar/NavBar.ts': "const a = at('KEY_AT'); const b = t('KEY_T');"});
+        const keys = scan(makeConfig(), tmpDir);
+        if (hasKey(keys, 'KEY_AT')) throw new Error('KEY_AT should not be extracted — at() is not t()');
+        if (!hasKey(keys, 'KEY_T')) throw new Error('KEY_T from t() not extracted');
     });
 
     it('ct annotation does not match word-boundary collision like tct', () => {

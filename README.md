@@ -34,6 +34,18 @@ Add to `package.json`:
 }
 ```
 
+### CLI options
+
+```
+i18n-po-extractor [options]
+
+  --config <path>    Path to config file (default: i18n-po-extractor.json or package.json)
+  --dry-run          Preview changes without writing any files
+  --help, -h         Print this help and exit
+```
+
+Use `--dry-run` to see what the extractor would do — which files would be created or updated and what key counts would change — without modifying anything on disk.
+
 ---
 
 ## Why?
@@ -82,7 +94,7 @@ Create `i18n-po-extractor.json` in your project root, or add an `"i18n-po-extrac
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `path` | `string` | required | Source path to scan |
-| `extensions` | `string[]` | `["ts", "tsx", "js", "jsx", "mjs", "vue"]` | File extensions to scan |
+| `extensions` | `string[]` | `["ts", "tsx", "js", "jsx", "mjs", "vue", "html"]` | File extensions to scan |
 | `output` | `string` | required | Output path template<br>Placeholders: `{firstFolderPath}`, `{firstFolderName}`, `{lastFolderPath}`, `{lastFolderName}`, `{fileName}`, `{scanPath}`, `{locale}` |
 | `namespace` | `string\|null` | `null` | Optional: written as `X-Namespace` header, enables namespace routing<br>Placeholders: `{firstFolderName}`, `{lastFolderName}`, `{fileName}` |
 | `commonOutput` | `string\|null` | `null` | Output template for common keys. When `namespaceInKey: true`: keys without `namespaceSeparator` are routed here. When `namespaceInKey: false`: keys appearing in more than one output file within the same scan group are automatically routed here. `null` disables common routing<br>Placeholders: `{scanPath}`, `{locale}` |
@@ -324,6 +336,21 @@ t(`NAV.SETTINGS`)
 msgid "NAV.SETTINGS"
 msgstr ""
 ```
+
+### Method call syntax (dot-notation)
+
+Dot-prefixed calls like `i18n.t()`, `this.t()`, or `this.$i18n.t()` are supported out of the box — no extra config needed. The marker regex uses a non-word lookbehind, so any `.`-prefixed chain resolves to the same marker:
+
+```ts
+i18n.t('GREETING')                // ✓ extracted
+this.t('GREETING')                // ✓ extracted
+this.$i18n.t('GREETING')          // ✓ extracted
+app.services.i18n.t('GREETING')   // ✓ extracted
+```
+
+This also works with custom markers — if you set `"markers": ["ct"]`, then `i18n.ct('KEY')` is matched the same way.
+
+> **Note:** Word-prefixed calls like `at()` or `gettext()` do **not** match the `t` marker, because the lookbehind requires a non-word character (or start of line) before the marker name.
 
 ### Options — context, plural, variables
 

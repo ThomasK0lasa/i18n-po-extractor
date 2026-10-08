@@ -22,6 +22,7 @@ printHelp(args);
 
 // load and validate config
 const {config, root} = loadConfig(args, process.cwd());
+config.dryRun = args.includes('--dry-run');
 
 // derive scan-level vars (mutates scan configs with pre-resolved fields)
 deriveScanVars(config);
