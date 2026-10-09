@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {it, after} from 'node:test';
 /**
  * Tests for fake-project-node — Node.js backend pattern.
  * Per-file namespace, snake_case validation.
@@ -12,6 +12,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-node');
 
 export default function () {
+    after(() => cleanupProject(projectDir));
+
     it('creates one .po per source file (file boundary)', () => {
         cleanupProject(projectDir);
         runIn(projectDir);
