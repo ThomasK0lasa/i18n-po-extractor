@@ -1,6 +1,6 @@
 {
     "name": "i18n-po-extractor",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Extract i18next t() keys from source files and sync per-component .po files with full gettext support.",
     "type": "module",
     "main": "index.js",
