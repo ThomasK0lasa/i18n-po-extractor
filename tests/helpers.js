@@ -1,5 +1,5 @@
 import {spawnSync} from 'node:child_process';
-import {readFileSync, existsSync, rmSync, readdirSync} from 'node:fs';
+import {readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, readdirSync} from 'node:fs';
 import {join, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import gettextParser from 'gettext-parser';
@@ -114,6 +114,50 @@ export function cleanupProject(projectPath) {
     }
     for (const dir of toRemove) {
         if (existsSync(dir)) rmSync(dir, {recursive: true});
+    }
+}
+
+/**
+ * Recursively collect .po files into the backup map.
+ * :param dir: current directory to scan
+ * :param root: root directory for relative path calculation
+ * :param backup: Map to store absolutePath → content
+ */
+function collectPoRecursive(dir, root, backup) {
+    for (const entry of readdirSync(dir, {withFileTypes: true})) {
+        const full = join(dir, entry.name);
+        if (entry.isDirectory()) {
+            collectPoRecursive(full, root, backup);
+        } else if (entry.name.endsWith('.po')) {
+            backup.set(full, readFileSync(full));
+        }
+    }
+}
+
+/**
+ * Snapshot all .po files under the given subdirectories of a project.
+ * :param baseDir: project root directory
+ * :param subDirs: subdirectories to scan for .po files
+ * :returns: Map of absolutePath → Buffer
+ */
+export function backupPoFiles(baseDir, subDirs) {
+    const backup = new Map();
+    for (const sub of subDirs) {
+        const full = join(baseDir, sub);
+        if (!existsSync(full)) continue;
+        collectPoRecursive(full, full, backup);
+    }
+    return backup;
+}
+
+/**
+ * Restore .po files from a backup map, recreating directories as needed.
+ * :param backup: Map of absolutePath → Buffer (from backupPoFiles)
+ */
+export function restorePoFiles(backup) {
+    for (const [filePath, content] of backup) {
+        mkdirSync(dirname(filePath), {recursive: true});
+        writeFileSync(filePath, content);
     }
 }
 

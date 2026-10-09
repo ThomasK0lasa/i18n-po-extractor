@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {it, after} from 'node:test';
 /**
  * Tests for fake-project-simple-spa — single namespace pattern.
  * All files route to one translation file, no namespace separation.
@@ -63,4 +63,6 @@ export default function () {
         if (!allRefs.includes('login')) throw new Error('No reference to login.ts');
         if (!allRefs.includes('dashboard')) throw new Error('No reference to dashboard.ts');
     });
+
+    after(() => cleanupProject(projectDir));
 }

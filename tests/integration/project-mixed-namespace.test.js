@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {it, after} from 'node:test';
 /**
  * Tests for fake-project-custom-2 — mixed namespace pattern.
  * Components use folder namespace next to source, lib files use central output.
@@ -6,12 +6,14 @@ import {it} from 'node:test';
 import {join, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {existsSync} from 'node:fs';
-import {runIn, parsePo, getKeys, cleanupProject} from '../helpers.js';
+import {runIn, parsePo, getKeys, cleanupProject, backupPoFiles, restorePoFiles} from '../helpers.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-custom-2');
 
 export default function () {
+    const poBackup = backupPoFiles(projectDir, ['src/components', 'src/pages', 'locales']);
+
     it('runs cleanly with mixed boundaries', () => {
         cleanupProject(projectDir);
         const result = runIn(projectDir);
@@ -88,5 +90,10 @@ export default function () {
         if (!existsSync(join(projectDir, 'locales/fr/email.po'))) {
             throw new Error('email.fr.po not created in locales/');
         }
+    });
+
+    after(() => {
+        cleanupProject(projectDir);
+        restorePoFiles(poBackup);
     });
 }
