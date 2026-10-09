@@ -23,9 +23,12 @@ function cleanup() {
 function expectExit1(fn) {
     let exitCode = null;
     const origExit = process.exit;
+    const origError = console.error;
     process.exit = (code) => { exitCode = code; throw new Error('exit'); };
+    console.error = () => {};
     try { fn(); } catch {}
     process.exit = origExit;
+    console.error = origError;
     return exitCode;
 }
 

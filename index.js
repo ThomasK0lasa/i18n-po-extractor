@@ -14,6 +14,7 @@ import {deriveScanVars, collectFiles} from './lib/file-collector.js';
 import {buildPoMap, resolveNamespaceOverrides} from './lib/po-map.js';
 import {buildKeyMap} from './lib/key-extractor.js';
 import {writeAndReport} from './lib/po-builder.js';
+import {compilePoFiles} from './lib/po-compiler.js';
 import {reportWarningsAndSummary, reportNamespaceMismatches} from './lib/report.js';
 
 const args = process.argv.slice(2);
@@ -23,6 +24,7 @@ printHelp(args);
 // load and validate config
 const {config, root} = loadConfig(args, process.cwd());
 config.dryRun = args.includes('--dry-run');
+config.noCompile = args.includes('--no-compile');
 
 // derive scan-level vars (mutates scan configs with pre-resolved fields)
 deriveScanVars(config);
@@ -40,6 +42,12 @@ const keys = buildKeyMap(fileList, poMap, config, root);
 
 // write .po files and report
 const writeResult = writeAndReport(keys, poMap, config);
+
+// compile .po files to target format (json/js/mo)
+if (config.compile && !config.noCompile) {
+    compilePoFiles(poMap, config);
+}
+
 reportWarningsAndSummary(keys, writeResult, config);
 
 assertScanResults(keys, config);

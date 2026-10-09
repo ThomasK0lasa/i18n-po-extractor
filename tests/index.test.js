@@ -32,6 +32,7 @@ import singleNamespace from './integration/project-single-namespace.test.js';
 import mixedNamespace from './integration/project-mixed-namespace.test.js';
 import commonReroute from './integration/common-reroute.test.js';
 import cli from './integration/cli.test.js';
+import compile from './integration/compile.test.js';
 import orphans from './integration/orphans.test.js';
 
 // unit suites
@@ -70,4 +71,5 @@ describe('fake-project-simple-spa (single namespace)', singleNamespace);
 describe('fake-project-custom-2 (mixed namespace)', mixedNamespace);
 describe('Common reroute (namespaceInKey: false)', commonReroute);
 describe('CLI', cli);
+describe('Compile (po → json/js/mo)', compile);
 describe('Orphan detection', orphans);
