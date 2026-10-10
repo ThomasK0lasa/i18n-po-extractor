@@ -1,4 +1,4 @@
-import {it, after} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 /**
  * Tests for fake-project-node — Node.js backend pattern.
  * Per-file namespace, snake_case validation.
@@ -11,12 +11,14 @@ import {runIn, parsePo, getKeys, cleanupProject} from '../helpers.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-node');
 
-export default function () {
+describe('fake-project-node (node backend + snake_case)', () => {
+    before(() => {
+        cleanupProject(projectDir);
+        runIn(projectDir);
+    });
     after(() => cleanupProject(projectDir));
 
     it('creates one .po per source file (file boundary)', () => {
-        cleanupProject(projectDir);
-        runIn(projectDir);
         if (!existsSync(join(projectDir, 'locales/en/userController.po'))) throw new Error('userController.po not created');
         if (!existsSync(join(projectDir, 'locales/en/authController.po'))) throw new Error('authController.po not created');
         if (!existsSync(join(projectDir, 'locales/en/emailService.po'))) throw new Error('emailService.po not created');
@@ -50,4 +52,4 @@ export default function () {
         if (!existsSync(join(projectDir, 'locales'))) throw new Error('locales/ dir not created');
         if (existsSync(join(projectDir, 'src/controllers/i18n'))) throw new Error('.po files written next to source');
     });
-}
+});

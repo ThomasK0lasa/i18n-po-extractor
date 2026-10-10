@@ -1,11 +1,14 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
-import {projectDir, run, parsePo, compilePo} from '../helpers.js';
+import {projectDir, run, cleanup, parsePo, compilePo} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 
-export default function () {
+describe('Metadata preservation', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('preserves custom headers across runs', () => {
         const data = parsePo(navbarPo);
         data.headers['Last-Translator'] = 'Tomasz Kolasa <tomasz@example.com>';
@@ -89,4 +92,4 @@ export default function () {
             throw new Error(`Per-key translator comment lost: ${comment}`);
         }
     });
-}
+});

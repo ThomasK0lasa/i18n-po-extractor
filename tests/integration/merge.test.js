@@ -1,11 +1,14 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
-import {projectDir, run, parsePo, compilePo, getKeys, getObsolete} from '../helpers.js';
+import {projectDir, run, cleanup, parsePo, compilePo, getKeys, getObsolete} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 
-export default function () {
+describe('Merge behavior', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('preserves existing translations on second run', () => {
         const data = parsePo(navbarPo);
         data.translations['']['NAV.SETTINGS'].msgstr = ['Ustawienia'];
@@ -43,4 +46,4 @@ export default function () {
         const comment = updated?.translations?.['']?.['NAV.SETTINGS']?.comments?.extracted;
         if (comment !== 'Appears in the top navigation bar') throw new Error(`Translator comment lost, got: ${comment}`);
     });
-}
+});

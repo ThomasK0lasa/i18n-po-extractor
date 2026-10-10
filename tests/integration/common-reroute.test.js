@@ -1,11 +1,11 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {join} from 'node:path';
 import {fakeProjectsDir, parsePo, getKeys, runWithConfig, cleanupProject} from '../helpers.js';
 
 const reactDir = join(fakeProjectsDir, 'fake-project-react');
 const custom1Dir = join(fakeProjectsDir, 'fake-project-custom-1');
 
-export default function () {
+describe('Common reroute (namespaceInKey: false)', () => {
 
     // rerouting behavior — namespaceInKey: false, commonOutput configured
     it('shared key routes to common po', () => {
@@ -75,4 +75,4 @@ export default function () {
         if (output.includes('COMMON USAGE')) throw new Error('Unexpected COMMON USAGE warning');
         cleanupProject(reactDir);
     });
-}
+});

@@ -1,12 +1,15 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
 import {existsSync} from 'node:fs';
-import {projectDir, run, parsePo, getKeys} from '../helpers.js';
+import {projectDir, run, cleanup, parsePo, getKeys} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 const navbarPlPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.pl.po');
 
-export default function () {
+describe('Extraction', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('exits with code 0', () => {
         const result = run();
         if (result.code !== 0) throw new Error(`Expected exit 0, got ${result.code}\n${result.stderr}`);
@@ -42,4 +45,4 @@ export default function () {
         const keys = getKeys(parsePo(navbarPo));
         if (!keys.includes('NAV.ITEM_HOME')) throw new Error('NAV.ITEM_HOME (line comment) not found');
     });
-}
+});

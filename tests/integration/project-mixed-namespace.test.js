@@ -1,4 +1,4 @@
-import {it, after} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 /**
  * Tests for fake-project-custom-2 — mixed namespace pattern.
  * Components use folder namespace next to source, lib files use central output.
@@ -11,11 +11,15 @@ import {runIn, parsePo, getKeys, cleanupProject, backupPoFiles, restorePoFiles} 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-custom-2');
 
-export default function () {
+describe('fake-project-custom-2 (mixed namespace)', () => {
     const poBackup = backupPoFiles(projectDir, ['src/components', 'src/pages', 'locales']);
 
-    it('runs cleanly with mixed boundaries', () => {
+    before(() => {
         cleanupProject(projectDir);
+        runIn(projectDir);
+    });
+
+    it('runs cleanly with mixed boundaries', () => {
         const result = runIn(projectDir);
         if (result.code !== 0) throw new Error(`Expected exit 0, got ${result.code}\n${result.stderr}`);
     });
@@ -96,4 +100,4 @@ export default function () {
         cleanupProject(projectDir);
         restorePoFiles(poBackup);
     });
-}
+});

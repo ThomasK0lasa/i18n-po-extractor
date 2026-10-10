@@ -1,8 +1,8 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {projectDir, fakeProjectsDir, bin, run, parsePo, getKeys} from '../helpers.js';
+import {projectDir, fakeProjectsDir, bin, run, cleanup, parsePo, getKeys} from '../helpers.js';
 
 function runForbidDynamic() {
     const config = {
@@ -26,7 +26,10 @@ function runForbidDynamic() {
     return {code: result.status ?? 1, stdout: result.stdout ?? '', stderr: result.stderr ?? ''};
 }
 
-export default function () {
+describe('Dynamic keys', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('warns about dynamic keys by default', () => {
         const result = run();
         const output = result.stdout + result.stderr;
@@ -49,4 +52,4 @@ export default function () {
         const output = result.stdout + result.stderr;
         if (!output.includes('forbidden')) throw new Error('No "forbidden" label in forbidDynamic output');
     });
-}
+});

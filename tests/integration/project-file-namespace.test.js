@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 /**
  * Tests for fake-project-react — file namespace pattern.
  * Per-file namespace, central locales output, camelCase keys.
@@ -11,10 +11,14 @@ import {runIn, parsePo, getKeys, cleanupProject} from '../helpers.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-react');
 
-export default function () {
-    it('creates one .po per source file for flat component structure', () => {
+describe('fake-project-react (file namespace + camelCase)', () => {
+    before(() => {
         cleanupProject(projectDir);
         runIn(projectDir);
+    });
+    after(() => cleanupProject(projectDir));
+
+    it('creates one .po per source file for flat component structure', () => {
         if (!existsSync(join(projectDir, 'locales/en/Button.po'))) throw new Error('Button.po not created');
         if (!existsSync(join(projectDir, 'locales/en/Modal.po'))) throw new Error('Modal.po not created');
         if (!existsSync(join(projectDir, 'locales/en/Navbar.po'))) throw new Error('Navbar.po not created');
@@ -48,4 +52,4 @@ export default function () {
             throw new Error(`Expected X-Namespace Button, got ${data?.headers?.['X-Namespace']}`);
         }
     });
-}
+});

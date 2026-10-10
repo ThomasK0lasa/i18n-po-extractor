@@ -1,10 +1,13 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
-import {projectDir, parsePo} from '../helpers.js';
+import {projectDir, cleanup, run, parsePo} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 
-export default function () {
+describe('Translator comments', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('extracts translator comment from source into #. in .po', () => {
         const data = parsePo(navbarPo);
         const entry = data?.translations?.['']?.['NAV.SETTINGS_HINT'];
@@ -68,4 +71,4 @@ export default function () {
         if (!entry.msgid_plural) throw new Error('NAV.ITEMS not marked as plural');
         if (entry.msgid_plural !== 'NAV.ITEMS') throw new Error(`Wrong msgid_plural: ${entry.msgid_plural}`);
     });
-}
+});

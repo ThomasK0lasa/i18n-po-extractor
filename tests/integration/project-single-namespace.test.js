@@ -1,4 +1,4 @@
-import {it, after} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 /**
  * Tests for fake-project-simple-spa — single namespace pattern.
  * All files route to one translation file, no namespace separation.
@@ -13,10 +13,13 @@ const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-simple-spa');
 const enPo = join(projectDir, 'public/i18n/translation.en.po');
 const frPo = join(projectDir, 'public/i18n/translation.fr.po');
 
-export default function () {
-    it('creates single translation file for all src files', () => {
+describe('fake-project-simple-spa (single namespace)', () => {
+    before(() => {
         cleanupProject(projectDir);
         runIn(projectDir);
+    });
+
+    it('creates single translation file for all src files', () => {
         if (!existsSync(enPo)) throw new Error('translation.en.po not created');
         if (!existsSync(frPo)) throw new Error('translation.fr.po not created');
     });
@@ -65,4 +68,4 @@ export default function () {
     });
 
     after(() => cleanupProject(projectDir));
-}
+});

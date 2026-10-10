@@ -1,4 +1,4 @@
-import {it, before, after} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 import {existsSync, readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {runIn, cleanupProject, fakeProjectsDir} from '../helpers.js';
@@ -33,7 +33,7 @@ function runWithCompile(config, ...extraArgs) {
     return runIn(simpleSpaDir, ...extraArgs);
 }
 
-export default function () {
+describe('Compile (po → json/js/mo)', () => {
     after(() => {
         writeFileSync(configPath, originalConfig);
         cleanupProject(simpleSpaDir);
@@ -273,7 +273,7 @@ export default function () {
         assertFileExists(jsonPath);
         assertFileExists(moPath);
     });
-}
+});
 
 
 // --- assertions ---

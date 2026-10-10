@@ -1,12 +1,15 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
-import {projectDir, run, parsePo, compilePo, getKeys, getObsolete} from '../helpers.js';
+import {projectDir, run, cleanup, parsePo, compilePo, getKeys, getObsolete} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 const commonPo = join(projectDir, 'src/i18n/common.en.po');
 
-export default function () {
+describe('Secondary run', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('source references are updated on second run', () => {
         run();
         const data = parsePo(navbarPo);
@@ -59,4 +62,4 @@ export default function () {
         const refs = entry.comments.reference.split('\n');
         if (refs.length < 2) throw new Error(`Expected multiple refs for CANCEL, got: ${entry.comments.reference}`);
     });
-}
+});

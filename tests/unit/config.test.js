@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {loadConfig} from '../../lib/config.js';
 import {join, dirname} from 'node:path';
 import {writeFileSync, rmSync, mkdirSync} from 'node:fs';
@@ -29,7 +29,7 @@ function expectExit1(fn) {
     return exitCode;
 }
 
-export default function () {
+describe('Unit — config', () => {
     it('loadConfig applies defaults for missing optional fields', () => {
         const path = writeConfig('basic.json', {
             locales: ['en'],
@@ -236,4 +236,4 @@ export default function () {
         }
         cleanup();
     });
-}
+});

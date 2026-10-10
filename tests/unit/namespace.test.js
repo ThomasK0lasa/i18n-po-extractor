@@ -1,8 +1,8 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {resolvePlaceholders} from '../../lib/utils/files.js';
 import {deriveFileVars} from '../../lib/file-collector.js';
 
-export default function () {
+describe('Unit — namespace', () => {
     // resolvePlaceholders
     it('resolvePlaceholders replaces {lastFolderName}, {locale}', () => {
         const result = resolvePlaceholders('{lastFolderName}/i18n/{lastFolderName}.{locale}.po', {
@@ -80,4 +80,4 @@ export default function () {
         const vars = deriveFileVars('NavBar/NavBar.ts', {path: 'src/components'});
         if (vars?.lastFolderName !== 'NavBar') throw new Error(`Expected lastFolder NavBar, got ${vars?.lastFolderName}`);
     });
-}
+});

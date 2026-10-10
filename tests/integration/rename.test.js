@@ -1,2 +1,2 @@
-import {it} from 'node:test';
-export default function () {}
+import {it, describe} from 'node:test';
+describe('Rename detection', () => {});

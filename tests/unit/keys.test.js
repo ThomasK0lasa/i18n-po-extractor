@@ -1,8 +1,8 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {getPattern, buildSeparatorRegex} from '../../lib/utils/conventions.js';
 import {isValidKey} from '../../lib/utils/keys.js';
 
-export default function () {
+describe('Unit — validate', () => {
     // getPattern
     it('getPattern returns null for null convention', () => {
         if (getPattern(null) !== null) throw new Error('Expected null');
@@ -51,4 +51,4 @@ export default function () {
         config.separatorRegex = buildSeparatorRegex(config);
         if (!isValidKey('LANG_RULE', p, config)) throw new Error('LANG_RULE should be valid with sentenceSeparator _');
     });
-}
+});

@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {it, describe} from 'node:test';
 /**
  * Tests for per-file namespace detection and ns: routing with two-pass scan.
  */
@@ -13,7 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // fake-project-react uses useTranslation('Button') etc — file boundary
 const reactDir = join(__dirname, '..', 'fixtures', 'fake-project-react');
 
-export default function () {
+describe('Per-file namespace & ns routing', () => {
     it('useTranslation() namespace routes keys to correct .po file', () => {
         cleanupProject(reactDir);
         runIn(reactDir);
@@ -207,4 +207,4 @@ export function Temp() {
         const output = result.stdout + result.stderr;
         if (!output.includes('UNKNOWN NAMESPACE')) throw new Error('Expected UNKNOWN NAMESPACE warning for different ns on external file');
     });
-}
+});

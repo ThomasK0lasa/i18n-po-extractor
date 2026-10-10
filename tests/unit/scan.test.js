@@ -1,4 +1,4 @@
-import {it, after} from 'node:test';
+import {describe, it, after} from 'node:test';
 import {scan, getFlagged, hasKey, getOccurrences, getPoPaths} from '../scan-helper.js';
 import {getPattern, buildSeparatorRegex} from '../../lib/utils/conventions.js';
 import {buildStopRegex, buildMarkerRe} from '../../lib/utils/keys.js';
@@ -46,7 +46,7 @@ function makeConfig(overrides = {}) {
     return base;
 }
 
-export default function () {
+describe('Unit — scan', () => {
 
     it('extracts static keys with single quotes', () => {
         setup({'src/components/NavBar/NavBar.ts': "export const a = t('NAV.HOME');"});
@@ -437,5 +437,4 @@ export default function () {
     });
 
     after(() => rmSync(tmpDir, {recursive: true, force: true}));
-}
-    // appended below existing last test — do not remove the closing brace above
+});

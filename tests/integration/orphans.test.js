@@ -1,11 +1,11 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync, mkdirSync, rmSync} from 'node:fs';
 import {fakeProjectsDir, runWithConfig, cleanupProject} from '../helpers.js';
 
 const reactDir = join(fakeProjectsDir, 'fake-project-react');
 
-export default function () {
+describe('Orphan detection', () => {
     it('detects orphaned .po files in subdirectory after component rename', () => {
         // First run — generate NavBar.en.po
         runWithConfig(reactDir, 'i18n-po-extractor.json');
@@ -24,4 +24,4 @@ export default function () {
 
         cleanupProject(reactDir);
     });
-}
+});

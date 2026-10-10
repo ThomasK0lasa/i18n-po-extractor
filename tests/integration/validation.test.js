@@ -1,8 +1,8 @@
-import {it} from 'node:test';
+import {it, describe, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {projectDir, bin} from '../helpers.js';
+import {projectDir, bin, cleanup} from '../helpers.js';
 
 function runWithValidation(convention, behavior = 'warn', extra = {}) {
     const config = {
@@ -25,7 +25,9 @@ function runWithValidation(convention, behavior = 'warn', extra = {}) {
     return {code: result.status ?? 1, stdout: result.stdout ?? '', stderr: result.stderr ?? ''};
 }
 
-export default function () {
+describe('Key validation', () => {
+    after(() => cleanup());
+
     it('no violations when convention is null', () => {
         const result = runWithValidation(null);
         if ((result.stdout + result.stderr).includes('KEY FORMAT')) throw new Error('Unexpected KEY FORMAT violations');
@@ -86,4 +88,4 @@ export default function () {
         const result = runWithValidation('SCREAMING_SNAKE_CASE', 'warn', {sentenceSeparator: '.'});
         if ((result.stdout + result.stderr).includes('conflicts')) throw new Error('Incorrectly flagged as conflict');
     });
-}
+});

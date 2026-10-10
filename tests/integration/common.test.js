@@ -1,10 +1,13 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
-import {projectDir, parsePo, getKeys} from '../helpers.js';
+import {projectDir, cleanup, run, parsePo, getKeys} from '../helpers.js';
 
 const commonPo = join(projectDir, 'src/i18n/common.en.po');
 
-export default function () {
+describe('Common keys', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('routes dot-less keys to common', () => {
         const keys = getKeys(parsePo(commonPo));
         if (!keys.includes('CANCEL')) throw new Error('CANCEL not in common');
@@ -15,7 +18,7 @@ export default function () {
         const keys = getKeys(parsePo(commonPo));
         if (keys.some((k) => k.includes('.'))) throw new Error('Dot keys found in common');
     });
-}
+});
 
 import {writeFileSync, mkdirSync, rmSync, existsSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';

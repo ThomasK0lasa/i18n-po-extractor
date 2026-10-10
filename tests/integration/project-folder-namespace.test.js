@@ -1,4 +1,4 @@
-import {it} from 'node:test';
+import {describe, it, before, after} from 'node:test';
 /**
  * Tests for fake-project-custom-1 — folder namespace pattern.
  * Per-folder namespace, keys next to source, SCREAMING_SNAKE_CASE.
@@ -6,18 +6,25 @@ import {it} from 'node:test';
 import {join, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {existsSync} from 'node:fs';
-import {runIn, parsePo, getKeys} from '../helpers.js';
+import {runIn, parsePo, getKeys, cleanupProject} from '../helpers.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectDir = join(__dirname, '..', 'fixtures', 'fake-project-custom-1');
 
-export default function () {
-    it('each child folder gets its own .po file', () => {
+describe('fake-project-custom-1 (folder namespace)', () => {
+    before(() => {
+        cleanupProject(projectDir);
         runIn(projectDir);
-        const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
-        const settingsPo = join(projectDir, 'src/components/Settings/i18n/Settings.en.po');
-        if (!existsSync(navbarPo)) throw new Error('NavBar.en.po not created');
-        if (!existsSync(settingsPo)) throw new Error('Settings.en.po not created');
+    });
+    after(() => cleanupProject(projectDir));
+
+    it('each child folder gets its own .po file', () => {
+        if (!existsSync(join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po'))) {
+            throw new Error('NavBar.en.po not created');
+        }
+        if (!existsSync(join(projectDir, 'src/components/Settings/i18n/Settings.en.po'))) {
+            throw new Error('Settings.en.po not created');
+        }
     });
 
     it('files in templates/ subfolder contribute to parent namespace', () => {
@@ -68,4 +75,4 @@ export default function () {
             throw new Error(`Wrong translator comment: ${entry.comments.extracted}`);
         }
     });
-}
+});

@@ -1,10 +1,13 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 import {join} from 'node:path';
-import {projectDir, parsePo} from '../helpers.js';
+import {projectDir, cleanup, run, parsePo} from '../helpers.js';
 
 const navbarPo = join(projectDir, 'src/components/NavBar/i18n/NavBar.en.po');
 
-export default function () {
+describe('Source references', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('writes source references (#:) to .po files', () => {
         const data = parsePo(navbarPo);
         const entry = data?.translations?.['']?.['NAV.SETTINGS'];
@@ -21,4 +24,4 @@ export default function () {
         const refs = entry.comments.reference.split('\n');
         if (refs.length < 2) throw new Error(`Expected multiple refs, got: ${entry.comments.reference}`);
     });
-}
+});

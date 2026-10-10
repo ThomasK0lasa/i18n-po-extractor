@@ -1,8 +1,8 @@
-import {it} from 'node:test';
+import {it, describe, after} from 'node:test';
 import {join} from 'node:path';
 import {writeFileSync, existsSync, rmSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {projectDir, bin, parsePo, getKeys} from '../helpers.js';
+import {projectDir, bin, cleanup, parsePo, getKeys} from '../helpers.js';
 
 function runNoCommon() {
     const config = {
@@ -24,7 +24,9 @@ function runNoCommon() {
     return {code: result.status ?? 1, stdout: result.stdout ?? '', stderr: result.stderr ?? ''};
 }
 
-export default function () {
+describe('Common disabled', () => {
+    after(() => cleanup());
+
     it('exits with code 0 when common is null', () => {
         const result = runNoCommon();
         if (result.code !== 0) throw new Error(`Expected exit 0, got ${result.code}\n${result.stderr}`);
@@ -43,4 +45,4 @@ export default function () {
         const keys = getKeys(parsePo(navbarPo));
         if (!keys.includes('CANCEL')) throw new Error('CANCEL not found in NavBar namespace');
     });
-}
+});

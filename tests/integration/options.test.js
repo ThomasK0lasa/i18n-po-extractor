@@ -1,15 +1,18 @@
-import {it} from 'node:test';
+import {it, describe, before, after} from 'node:test';
 /**
  * Tests for t() options parsing:
  * context, plural, interpolation vars, variable options (unresolvable), annotations.
  */
 import {join} from 'node:path';
 import {writeFileSync} from 'node:fs';
-import {projectDir, run, parsePo, compilePo} from '../helpers.js';
+import {projectDir, run, cleanup, parsePo, compilePo} from '../helpers.js';
 
 const settingsPo = join(projectDir, 'src/components/Settings/i18n/Settings.en.po');
 
-export default function () {
+describe('Options — context, plural, vars, ns', () => {
+    before(() => { cleanup(); run(); });
+    after(() => cleanup());
+
     it('context creates separate msgctxt entry', () => {
         const data = parsePo(settingsPo);
         const verbEntry = data?.translations?.['verb']?.['SETTINGS.SAVE'];
@@ -182,4 +185,4 @@ export default function () {
         const entry = data?.translations?.['verb']?.['SETTINGS.IGNORE_MARKER'];
         if (!entry) throw new Error('SETTINGS.IGNORE_MARKER with context verb not found — annotation key should still extract');
     });
-}
+});

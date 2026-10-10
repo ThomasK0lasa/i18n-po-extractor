@@ -1,11 +1,11 @@
-import {it} from 'node:test';
+import {describe, it} from 'node:test';
 import {existsSync} from 'node:fs';
 import {join} from 'node:path';
 import {run, runIn, cleanupProject, fakeProjectsDir} from '../helpers.js';
 
 const simpleSpaDir = join(fakeProjectsDir, 'fake-project-simple-spa');
 
-export default function () {
+describe('CLI', () => {
     it('--help exits with code 0', () => {
         const result = run('--help');
         if (result.code !== 0) throw new Error(`Expected exit 0, got ${result.code}`);
@@ -60,4 +60,4 @@ export default function () {
         }
         cleanupProject(simpleSpaDir);
     });
-}
+});
