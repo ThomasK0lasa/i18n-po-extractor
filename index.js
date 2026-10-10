@@ -15,7 +15,8 @@ import {buildPoMap, resolveNamespaceOverrides} from './lib/po-map.js';
 import {buildKeyMap} from './lib/key-extractor.js';
 import {writeAndReport} from './lib/po-builder.js';
 import {compilePoFiles} from './lib/po-compiler.js';
-import {reportWarningsAndSummary, reportNamespaceMismatches} from './lib/report.js';
+import {reportWarningsAndSummary, reportNamespaceMismatches,
+    parseReportFlag, reportChanges} from './lib/report.js';
 
 const args = process.argv.slice(2);
 
@@ -25,6 +26,7 @@ printHelp(args);
 const {config, root} = loadConfig(args, process.cwd());
 config.dryRun = args.includes('--dry-run');
 config.noCompile = args.includes('--no-compile');
+config.reportCategories = parseReportFlag(args);
 
 // derive scan-level vars (mutates scan configs with pre-resolved fields)
 deriveScanVars(config);
@@ -42,6 +44,11 @@ const keys = buildKeyMap(fileList, poMap, config, root);
 
 // write .po files and report
 const writeResult = writeAndReport(keys, poMap, config);
+
+// print detailed change report if --report was passed
+if (config.reportCategories) {
+    reportChanges(writeResult.changesByLocale, config.reportCategories);
+}
 
 // compile .po files to target format (json/js/mo)
 if (config.compile && !config.noCompile) {

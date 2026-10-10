@@ -1,5 +1,11 @@
 # Changelog
 
+2.1.0 (2026-10-10):
+
+* feat: `--report` CLI flag — shows which keys were added, restored, or obsoleted after extraction
+* feat: language-agnostic report with per-locale annotations when changes differ across locales
+* feat: optional category filter (`--report added,obsoleted`)
+
 2.0.0 (2026-10-09):
 
 * feat: compile step — converts `.po` to consumable formats (`json`, `js`, `mo`) after extraction
