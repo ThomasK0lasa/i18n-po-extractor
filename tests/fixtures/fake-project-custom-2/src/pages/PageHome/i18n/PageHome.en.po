@@ -5,18 +5,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Namespace: PageHome\n"
 
-#: src/pages/PageHome/index.ts:8
 #: src/pages/PageHome/PageHome.vue.ts:6
+#: src/pages/PageHome/index.ts:8
 msgid "getStarted"
 msgstr ""
 
-#: src/pages/PageHome/index.ts:7
 #: src/pages/PageHome/PageHome.vue.ts:5
+#: src/pages/PageHome/index.ts:7
 msgid "heroSubtitle"
 msgstr ""
 
-#: src/pages/PageHome/index.ts:6
 #: src/pages/PageHome/PageHome.vue.ts:4
+#: src/pages/PageHome/index.ts:6
 msgid "heroTitle"
 msgstr ""
 

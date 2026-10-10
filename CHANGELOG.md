@@ -1,5 +1,9 @@
 # Changelog
 
+2.1.1 (2026-10-10):
+
+* fix: sort source references (`#:`) deterministically for stable `.po` output across platforms
+
 2.1.0 (2026-10-10):
 
 * feat: `--report` CLI flag — shows which keys were added, restored, or obsoleted after extraction
