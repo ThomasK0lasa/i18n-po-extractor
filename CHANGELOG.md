@@ -1,5 +1,9 @@
 # Changelog
 
+2.1.2 (2026-10-13):
+
+* fix: sort source references by file path then line number numerically (not lexicographically)
+
 2.1.1 (2026-10-10):
 
 * fix: sort source references (`#:`) deterministically for stable `.po` output across platforms
